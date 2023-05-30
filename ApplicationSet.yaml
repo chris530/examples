@@ -1,0 +1,28 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: chris530-examples-appset
+  namespace: argocd
+spec:
+  generators:
+  - git:
+      repoURL: 'https://github.com/chris530/examples.git'
+      directories:
+      - path: Apps/*
+  template:
+    metadata:
+      name: '{{path.basename}}'
+    spec:
+      project: default
+      source:
+        repoURL: 'https://github.com/chris530/examples.git'
+        path: '{{path}}'
+        targetRevision: HEAD
+      destination:
+        server: 'https://kubernetes.default.svc'
+        namespace: '{{path.basename}}'
+      syncPolicy:
+        automated: 
+          prune: true
+          selfHeal: true

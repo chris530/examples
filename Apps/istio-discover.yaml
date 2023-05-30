@@ -1,0 +1,24 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: istio-discover
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: 'https://github.com/chris530/examples.git'
+    targetRevision: main
+    helm:
+      name: istio-discover
+      valueFiles:
+        - values.yaml
+      path: charts/istio-discover
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: istio-system
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+  syncOptions:
+   - CreateNamespace=true

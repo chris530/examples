@@ -1,0 +1,24 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: istio-base
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: 'https://github.com/chris530/examples.git'
+    targetRevision: main
+    helm:
+      name: istio-base
+      valueFiles:
+        - values.yaml
+      path: charts/base
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: istio-system
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+  syncOptions:
+   - CreateNamespace=true

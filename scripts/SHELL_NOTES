@@ -1,0 +1,6 @@
+
+# get password 
+kubectl get secret -n argocd argocd-initial-admin-secret -ojsonpath={.data.password} | base64 -D | pbcopy 
+
+# port forward
+kubectl port-forward svc/argocd-server -n argocd 8080:443

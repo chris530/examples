@@ -11,7 +11,7 @@ spec:
     helm:
       valueFiles:
         - values.yaml
-    path: charts/istio-discover
+    path: charts/istio-discovery
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: istio-system

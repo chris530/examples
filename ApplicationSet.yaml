@@ -2,7 +2,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: chris530-examples-appset
+  name: chris530-apps
   namespace: argocd
 spec:
   generators:
@@ -13,17 +13,16 @@ spec:
       - path: Apps/*
   template:
     metadata:
-      name: '{{path.basename}}'
+      name: '{{path[0]}}'
     spec:
       project: default
       source:
-        repoURL: 'https://github.com/chris530/examples.git'
-        path: '{{path}}'
+        repoURL: https://github.com/chris530/examples.git
         targetRevision: main
+        path: '{{path}}'
+        helm:
+          valueFiles:
+            - values.yaml
       destination:
-        server: 'https://kubernetes.default.svc'
-        namespace: argocd
-      syncPolicy:
-        automated: 
-          prune: true
-          selfHeal: true
+        server: https://kubernetes.default.svc
+        namespace: '{{path.basename}}'

@@ -11,7 +11,7 @@ spec:
     helm:
       valueFiles:
         - values.yaml
-    path: charts/base
+    path: charts/istio-base
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: istio-system

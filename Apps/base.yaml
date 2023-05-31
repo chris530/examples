@@ -9,10 +9,9 @@ spec:
     repoURL: 'https://github.com/chris530/examples.git'
     targetRevision: main
     helm:
-      name: istio-base
       valueFiles:
         - values.yaml
-      path: charts/base
+    path: charts/base
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: istio-system
@@ -20,5 +19,5 @@ spec:
     automated:
       prune: true
       selfHeal: true
-  syncOptions:
-   - CreateNamespace=true
+    syncOptions:
+    - CreateNamespace=true

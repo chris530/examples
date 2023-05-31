@@ -12,7 +12,7 @@ spec:
       name: istio-egress
       valueFiles:
         - values.yaml
-      path: charts/istio-egress
+    path: charts/istio-egress
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: istio-system
@@ -20,5 +20,5 @@ spec:
     automated:
       prune: true
       selfHeal: true
-  syncOptions:
-   - CreateNamespace=true
+    syncOptions:
+    - CreateNamespace=true

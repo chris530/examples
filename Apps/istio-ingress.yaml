@@ -12,7 +12,7 @@ spec:
       name: istio-ingress
       valueFiles:
         - values.yaml
-      path: charts/istio-ingress
+    path: charts/istio-ingress
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: istio-system
@@ -20,5 +20,5 @@ spec:
     automated:
       prune: true
       selfHeal: true
-  syncOptions:
-   - CreateNamespace=true
+    syncOptions:
+    - CreateNamespace=true

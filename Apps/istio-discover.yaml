@@ -9,7 +9,6 @@ spec:
     repoURL: 'https://github.com/chris530/examples.git'
     targetRevision: main
     helm:
-      name: istio-discover
       valueFiles:
         - values.yaml
     path: charts/istio-discover

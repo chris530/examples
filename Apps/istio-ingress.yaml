@@ -9,7 +9,6 @@ spec:
     repoURL: 'https://github.com/chris530/examples.git'
     targetRevision: main
     helm:
-      name: istio-ingress
       valueFiles:
         - values.yaml
     path: charts/istio-ingress

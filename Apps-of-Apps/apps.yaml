@@ -10,7 +10,7 @@ spec:
   source:
     path: Apps
     repoURL: https://github.com/chris530/examples.git
-    targetRevision: master
+    targetRevision: HEAD
   project: default
   syncPolicy:
     automated:

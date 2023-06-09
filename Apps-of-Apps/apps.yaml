@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: apps
+  namespace: argo-cd
+spec:
+  destination:
+    name: in-cluster
+    namespace: argo-cd
+  source:
+    path: Apps
+    repoURL: https://github.com/chris530/examples.git
+    targetRevision: master
+  project: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true

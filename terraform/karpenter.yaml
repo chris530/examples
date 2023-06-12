@@ -1,0 +1,20 @@
+---
+apiVersion: karpenter.sh/v1alpha3
+kind: Provisioner
+metadata:
+  name: spot-provisioner
+spec:
+  constraints:
+    enabled: true
+    taints:
+      - key: karpenter.sh/spot
+        value: "true"
+        effect: NoSchedule
+  strategy:
+    type: Spot
+    rollingUpdate:
+      maxUnavailable: 1
+  constraints:
+    - type: Memory
+      minimum: 4Gi
+      maximum: 12Gi
